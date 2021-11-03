@@ -1,0 +1,408 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --scissorsBg: #EB9F0E;
+    --scissorsShadow: #c76c1b;
+
+    --spockBg: #3FB7CD;
+    --spockShadow: #2d8dab;
+
+    --paperBg: #4664F4; 
+    --paperShadow: #2a45c2;
+
+    --lizardBg: #834EE3;
+    --lizardShadow: #5f37a8;
+
+    --rockBg: #DB2E4D;
+    --rockShadow: #9d1634;
+}
+
+body {
+    background: radial-gradient(134.34% 134.34% at 50% 0%, #1F3757 0%, #131537 100%);
+    height: 100vh;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 48px;
+}
+
+header {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    border: 3px solid rgba(255, 255, 255, 0.289199);
+    border-radius: 15px;
+    padding: 18px 25px;
+}
+
+.logo {
+    height: 100%;
+}
+
+.scoreboard {
+    height: 100%;
+    width: 150px;
+    padding: 15px 0;
+    background: linear-gradient(0deg, #F3F3F3 0%, #FFFFFF 100%);
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
+    border-radius: 8px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.scoreboard h4 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.5px;
+    color: #2A45C2;
+}
+
+.scoreboard h1 {
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 64px;
+    text-align: center;
+    color: #565468;
+}
+
+main {
+    width: 472px;
+    height: 463px;
+    margin: 50px auto 0 auto ;
+    position: relative;
+}
+
+main.hidden {
+    display: none;
+}
+
+.main-bg {
+    position: absolute;
+    width: max-content;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.game-buttons {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+}
+
+.circle {
+    cursor: pointer;
+    height: 145px;
+    width: 145px;
+    border-radius: 50%;
+    padding: 16px;
+}
+
+.inner-circle {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(0deg, #F3F3F3 0%, #DADADA 98.34%);
+    border-radius: 50%;
+    box-shadow: inset 0 6px 0 0 #BABFD4;
+}
+
+.scissors {
+    background: var(--scissorsBg);
+    box-shadow:  0 6px 0 0 var(--scissorsShadow);
+    grid-area: 1 / 1 / 2 /3;
+    justify-self: center;
+}
+
+.scissors:hover {
+    box-shadow:  0 6px 0 0 var(--scissorsShadow), 0 0 0 21px rgba(255, 255, 255, 0.05);
+}
+
+.spock {
+    background: var(--spockBg);
+    box-shadow: 0 6px 0 0 var(--spockShadow);
+    grid-area: 2 / 1 / 3 / 2;
+    margin-bottom: 10px;
+    transform: translateY(-20%);
+}
+
+.spock:hover {
+    box-shadow: 0 6px 0 0 var(--spockShadow), 0 0 0 21px rgba(255, 255, 255, 0.05);
+}
+
+.paper {
+    background: var(--paperBg);
+    box-shadow: 0 6px 0 0 var(--paperShadow);
+    grid-area: 2 / 2 / 3 / 3;
+    justify-self: flex-end;
+    margin-bottom: 10px;
+    transform: translateY(-20%);
+}
+
+.paper:hover {
+    box-shadow: 0 6px 0 0 var(--paperShadow), 0 0 0 21px rgba(255, 255, 255, 0.05);
+}
+
+
+.lizard {
+    background: var(--lizardBg);
+    box-shadow: 0 6px 0 0 var(--lizardShadow);
+    grid-area: 3 / 1 / 4 / 2;
+    justify-self: flex-end;
+    margin-right: 26px;
+}
+
+.lizard:hover {
+    box-shadow: 0 6px 0 0 var(--lizardShadow), 0 0 0 21px rgba(255, 255, 255, 0.05);
+}
+
+.rock {
+    background: var(--rockBg);
+    box-shadow: 0 6px 0 0 var(--rockShadow);
+    grid-area: 3 / 2 / 4 / 3;
+    justify-self: flex-start;
+    margin-left: 26px;
+}
+
+.rock:hover {
+    box-shadow: 0 6px 0 0 var(--rockShadow), 0 0 0 21px rgba(255, 255, 255, 0.05);
+}
+
+.rules-btn {
+    width: 128px;
+    height: 40px;
+    position: absolute;
+    right: 32px;
+    bottom: 32px;
+    text-align: center;
+    cursor: pointer;
+    background: none;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.rules-btn:hover {
+    background: #FFFFFF;
+    color: #3B4262;
+}
+
+.rules-modal {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.rules-modal-active {
+    display: flex;
+}
+
+.rules {
+    background: #FFFFFF;
+    padding: 32px 32px 47px 32px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
+    border-radius: 8px;
+}
+
+.modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-head h1 {
+    font-size: 32px;
+    line-height: 32px;
+    text-transform: uppercase;
+    color: #3B4262;
+}
+
+.modal-head img {
+    cursor: pointer;
+}
+
+.battle-display {
+    position: relative;
+    max-width: 1200px ;
+    margin: 50px auto 0 auto;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.battle-display.active {
+    display: flex;
+}
+
+.player-pick {
+    transform: translateX(0%);
+    transition: all 300ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 35px;
+    padding-bottom: 15px;
+}
+
+.player-pick h3 {
+    margin-bottom: 63px;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 3px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
+}
+
+.picked-shape {
+    height: 300px;
+    width: 300px;
+    background:  var(--scissorsBg);
+    box-shadow: 0 12px 0 0  var(--scissorsShadow);
+    border-radius: 50%;
+    padding: 33px;
+}
+
+.picked-inner-circle {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(0deg, #F3F3F3 0%, #DADADA 98.34%);
+    border-radius: 50%;
+    box-shadow: inset 0 12px 0 0 #BABFD4;
+}   
+
+.picked-inner-circle img {
+    width: 100px;
+}
+
+
+.result {
+    text-align: center;
+    position: absolute;
+    z-index: 9;
+    transform: translateY(500px);
+    transition: all 300ms ease-in-out;
+}
+
+.result h1 {
+    margin-bottom: 16px;
+    font-weight: bold;
+    font-size: 56px;
+    line-height: 67px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
+}
+
+.play-again-btn {
+    width: 220px;
+    height: 48px;
+    cursor: pointer;
+    background: linear-gradient(0deg, #F3F3F3 0%, #FFFFFF 100%);
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
+    border-radius: 8px;
+    border: none;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.5px;
+    color: #3B4262;
+    }
+
+.AI-pick {
+    transform: translateX(0%);
+    transition: all 300ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 35px;
+    padding-bottom: 15px;
+}
+
+.AI-pick h3 {
+    margin-bottom: 63px;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 3px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
+}
+
+.AI-shape {
+    height: 300px;
+    width: 300px;
+    /*background:  var(--scissorsBg);
+    box-shadow: 0 12px 0 0  var(--scissorsShadow);*/
+    border-radius: 50%;
+    padding: 33px;
+}
+
+.AI-shape-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    /*box-shadow: inset 0 12px 0 0 #BABFD4;*/
+}
+
+.AI-shape-inner img {
+    width: 100px;
+}
+
+.AI-choice {
+    display: none;
+}
+
+.AI-choice.active {
+    display: block;
+}
+
+.loader {
+    display: none;
+}
+
+.loader.active {
+    display: block;
+}
+
+
+/* 0 0 0 50px hsl(0deg 0% 100% / 7%), 
+0 0 0 100px hsl(0deg 0% 100% / 5%), 
+0 0 0 150px hsl(0deg 0% 100% / 3%);
+*/
