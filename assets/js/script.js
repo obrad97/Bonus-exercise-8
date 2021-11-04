@@ -4,7 +4,8 @@ var rockPaperScissors = (function() {
     const closeModalBtn = document.querySelector('.close-modal');
     const circles = document.querySelectorAll('.circle');
     const playerShape = document.querySelector('.picked-shape');
-    const playerShapeImg = playerShape.querySelector('img');
+    const playerInnerCircle = document.querySelector('.picked-inner-circle');
+    const playerShapeImg = document.querySelector('.player-choice');
     const aiShape = document.querySelector('.AI-shape');
     const aiShapeImg = document.querySelector('.AI-choice');
     const aiInnerCircle = document.querySelector('.AI-shape-inner');
@@ -14,6 +15,7 @@ var rockPaperScissors = (function() {
     const mainShapeSelection = document.querySelector('main');
     const battleDisplay = document.querySelector('.battle-display');
     const scoreBoard = document.querySelector('.score');
+    const result = document.querySelector('.result');
     let score = 0;
     let aiHasChosen;
     let playerHasChosen;
@@ -45,13 +47,13 @@ var rockPaperScissors = (function() {
 
 
     const startBattle = (index) => {
-        const choice = Object.keys(shapeRelations)
-        playerShape.style.background = `var(--${choice[index]}Bg)`;
-        playerShape.style.boxShadow = `0 12px 0 0 var(--${choice[index]}Shadow)`;
-        playerShapeImg.setAttribute('src', `images/icon-${choice[index]}.svg`);
-        playerHasChosen = choice[index];
         mainShapeSelection.classList.add('hidden');
-        battleDisplay.classList.add('active');
+        if (window.innerWidth <= 1000) {
+            battleDisplay.style.display = 'grid'
+        }else {
+            battleDisplay.style.display = 'flex'
+        }
+        loadPlayerChosenShape(index)
         displayHideLoader();
         setTimeout(() => {
             displayHideLoader();
@@ -59,13 +61,20 @@ var rockPaperScissors = (function() {
         }, 1000);
     }
 
+    const loadPlayerChosenShape = (index) => {
+        const choice = Object.keys(shapeRelations);
+        playerHasChosen = choice[index];
+        playerShape.style.background = `var(--${choice[index]}Bg)`;
+        playerShapeImg.setAttribute('src', `images/icon-${choice[index]}.svg`);
+        resizePlayerShadowChange(playerHasChosen);
+    }
+
     const loadAiChosenShape = (choice) => {
         aiShape.style.background = `var(--${choice}Bg)`;
-        aiShape.style.boxShadow = `0 12px 0 0 var(--${choice}Shadow)`;
         aiInnerCircle.style.background = 'linear-gradient(0deg, #F3F3F3 0%, #DADADA 98.34%)';
-        aiInnerCircle.style.boxShadow = 'inset 0 12px 0 0 #BABFD4';
+        resizeAiShadowChange(aiHasChosen);
         aiShapeImg.setAttribute('src', `images/icon-${choice}.svg`);
-        aiShapeImg.classList.add('active')
+        aiShapeImg.classList.add('active');
     }
 
     const resetAiShape = () => {
@@ -97,8 +106,18 @@ var rockPaperScissors = (function() {
             winner.innerText = 'you win'
             score ++;
             scoreBoard.innerText = score;
+            if (window.innerWidth <= 710) {
+                playerShape.style.boxShadow += ',0 0 0 25px hsl(0deg 0% 100% / 7%), 0 0 0 50px hsl(0deg 0% 100% / 5%), 0 0 0 100px hsl(0deg 0% 100% / 3%)';
+            }else {
+                playerShape.style.boxShadow += ',0 0 0 50px hsl(0deg 0% 100% / 7%), 0 0 0 100px hsl(0deg 0% 100% / 5%), 0 0 0 150px hsl(0deg 0% 100% / 3%)';
+            }
         } else  {
             winner.innerText = 'you loose'
+            if (window.innerWidth <= 710) {
+                aiShape.style.boxShadow += ',0 0 0 25px hsl(0deg 0% 100% / 7%), 0 0 0 50px hsl(0deg 0% 100% / 5%), 0 0 0 100px hsl(0deg 0% 100% / 3%)';
+            }else {
+                aiShape.style.boxShadow += ',0 0 0 50px hsl(0deg 0% 100% / 7%), 0 0 0 100px hsl(0deg 0% 100% / 5%), 0 0 0 150px hsl(0deg 0% 100% / 3%)';
+            }
         }
         showResults();
     }
@@ -106,22 +125,24 @@ var rockPaperScissors = (function() {
     const showResults = () => {
         const playerPick = document.querySelector('.player-pick');
         const aiPick = document.querySelector('.AI-pick');
-        const result = document.querySelector('.result');
-        playerPick.style.transform = 'translateX(-50%)';
-        aiPick.style.transform = 'translateX(50%)';
-        result.style.transform = 'translateY(0)';
+        if (window.innerWidth > 1000) {
+            playerPick.style.transform = 'translateX(-50%)';
+            aiPick.style.transform = 'translateX(50%)';
+        }
+        winner.style.transform = 'translateY(0)';
+        playAgainBtn.style.transform = 'translateY(0)';
     }
 
     const resetForNextRound = () => {
         const playerPick = document.querySelector('.player-pick');
         const aiPick = document.querySelector('.AI-pick');
-        const result = document.querySelector('.result');
         mainShapeSelection.classList.remove('hidden');
-        battleDisplay.classList.remove('active');
+        battleDisplay.style.display = 'none';
         resetAiShape();
         playerPick.style.transform = 'translateX(0)';
         aiPick.style.transform = 'translateX(0)';
-        result.style.transform = 'translateY(500px)';
+        winner.style.transform = 'translateY(120px)';
+        playAgainBtn.style.transform = 'translateY(50px)';
     }
 
     const openRulesModal = () => {
@@ -149,7 +170,43 @@ var rockPaperScissors = (function() {
         })
     })
 
+    const resizePlayerShadowChange = (choice) => {
+        if (window.innerWidth <= 710) {
+            playerShape.style.boxShadow = `0 6px 0 0 var(--${choice}Shadow)`;
+        } else {
+            playerShape.style.boxShadow = `0 12px 0 0 var(--${choice}Shadow)`;
+        }
+    }
 
+    const resizeAiShadowChange = (choice) => {
+        if (window.innerWidth <= 710) {
+            aiShape.style.boxShadow = `0 6px 0 0 var(--${choice}Shadow)`;
+            aiInnerCircle.style.boxShadow = 'inset 0 5px 0 0 #BABFD4'
+        } else {
+            aiShape.style.boxShadow = `0 12px 0 0 var(--${choice}Shadow)`;
+            aiInnerCircle.style.boxShadow = 'inset 0 12px 0 0 #BABFD4';
+        }
+    }
 
+    window.addEventListener('resize', (e)=> {
+        const playerPick = document.querySelector('.player-pick');
+        const aiPick = document.querySelector('.AI-pick');
+        if (battleDisplay.style.display == 'grid' || battleDisplay.style.display =='flex'){
+            if (window.innerWidth <= 1000) {
+                battleDisplay.style.display = 'grid';
+                result.style.position = 'static';
+                playerPick.style.transform = 'translateX(0)';
+                aiPick.style.transform = 'translateX(0)';
+            }else {
+                battleDisplay.style.display = 'flex'
+                result.style.position = 'absolute';
+                playerPick.style.transform = 'translateX(-50%)';
+                aiPick.style.transform = 'translateX(50%)';
+            }
+        }
+        resizePlayerShadowChange(playerHasChosen);
+        resizeAiShadowChange(aiHasChosen);
+
+    })
 
 })();

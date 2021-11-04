@@ -24,11 +24,13 @@
 body {
     background: radial-gradient(134.34% 134.34% at 50% 0%, #1F3757 0%, #131537 100%);
     height: 100vh;
+    position: relative;
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
 
 .container {
     max-width: 700px;
+    height: max-content;
     margin: 0 auto;
     padding-top: 48px;
 }
@@ -76,7 +78,6 @@ header {
 
 main {
     width: 472px;
-    height: 463px;
     margin: 50px auto 0 auto ;
     position: relative;
 }
@@ -122,7 +123,7 @@ main.hidden {
 
 .scissors {
     background: var(--scissorsBg);
-    box-shadow:  0 6px 0 0 var(--scissorsShadow);
+    box-shadow:  0 6px 0 0 var(--scissorsShadow), 0 8px 5px -3px black;
     grid-area: 1 / 1 / 2 /3;
     justify-self: center;
 }
@@ -133,7 +134,7 @@ main.hidden {
 
 .spock {
     background: var(--spockBg);
-    box-shadow: 0 6px 0 0 var(--spockShadow);
+    box-shadow: 0 6px 0 0 var(--spockShadow) , 0 8px 5px -3px black;
     grid-area: 2 / 1 / 3 / 2;
     margin-bottom: 10px;
     transform: translateY(-20%);
@@ -145,7 +146,7 @@ main.hidden {
 
 .paper {
     background: var(--paperBg);
-    box-shadow: 0 6px 0 0 var(--paperShadow);
+    box-shadow: 0 6px 0 0 var(--paperShadow), 0 8px 5px -3px black;
     grid-area: 2 / 2 / 3 / 3;
     justify-self: flex-end;
     margin-bottom: 10px;
@@ -159,7 +160,7 @@ main.hidden {
 
 .lizard {
     background: var(--lizardBg);
-    box-shadow: 0 6px 0 0 var(--lizardShadow);
+    box-shadow: 0 6px 0 0 var(--lizardShadow), 0 8px 5px -3px black;
     grid-area: 3 / 1 / 4 / 2;
     justify-self: flex-end;
     margin-right: 26px;
@@ -171,7 +172,7 @@ main.hidden {
 
 .rock {
     background: var(--rockBg);
-    box-shadow: 0 6px 0 0 var(--rockShadow);
+    box-shadow: 0 6px 0 0 var(--rockShadow), 0 8px 5px -3px black;
     grid-area: 3 / 2 / 4 / 3;
     justify-self: flex-start;
     margin-left: 26px;
@@ -181,12 +182,17 @@ main.hidden {
     box-shadow: 0 6px 0 0 var(--rockShadow), 0 0 0 21px rgba(255, 255, 255, 0.05);
 }
 
-.rules-btn {
-    width: 128px;
-    height: 40px;
+
+.rules-btn-container {
     position: absolute;
     right: 32px;
     bottom: 32px;
+    text-align: center;
+}
+
+.rules-btn {
+    width: 128px;
+    height: 40px;
     text-align: center;
     cursor: pointer;
     background: none;
@@ -254,7 +260,6 @@ main.hidden {
     display: none;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
 .battle-display.active {
@@ -310,11 +315,12 @@ main.hidden {
     text-align: center;
     position: absolute;
     z-index: 9;
-    transform: translateY(500px);
-    transition: all 300ms ease-in-out;
+    overflow: hidden;
 }
 
 .result h1 {
+    transform: translateY(120px);
+    transition: all 300ms ease-in-out;
     margin-bottom: 16px;
     font-weight: bold;
     font-size: 56px;
@@ -325,6 +331,8 @@ main.hidden {
 }
 
 .play-again-btn {
+    transform: translateY(50px);
+    transition: all 300ms ease-in-out;
     width: 220px;
     height: 48px;
     cursor: pointer;
@@ -401,8 +409,256 @@ main.hidden {
     display: block;
 }
 
+@media only screen and (max-width: 1000px) {
+    
+    .battle-display {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto;
+    }
 
-/* 0 0 0 50px hsl(0deg 0% 100% / 7%), 
-0 0 0 100px hsl(0deg 0% 100% / 5%), 
-0 0 0 150px hsl(0deg 0% 100% / 3%);
-*/
+    .player-pick {
+        grid-area: 1 / 1 / 2 / 2 ;
+    }
+
+    .result {
+        position: static;
+        grid-area: 2 / 1 / 3 / 3;
+    }
+
+    .AI-pick {
+        grid-area: 1 / 2 / 2 / 3;
+    }
+}
+
+@media only screen and (max-width: 710px) {
+
+    .container {
+        padding: 32px;
+    }
+
+    header {
+        max-width: 311px;
+        height: 96px;
+        padding: 12px;
+        margin: 0 auto;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 10px;
+    }
+
+    .logo img {
+        width: 48px;
+    }
+
+    .scoreboard {
+        width: 80px;
+        padding: 10px;
+    }
+
+    .scoreboard h4 {
+        font-size: 10px;
+        line-height: 12px;
+        letter-spacing: 1.5625px;
+    }
+
+    .scoreboard h1 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    main {
+        max-width: 311px;
+        width: unset;
+    }
+
+    .main-bg img {
+        width: 215px;
+    }
+
+    .circle {
+        width: 97px;
+        height: 97px;
+        padding: 10px;
+    }
+
+    .inner-circle {
+        box-shadow: inset 0 3px 0 0 #babfd4;
+    }
+
+    .inner-circle img {
+        width: 35px;
+    }
+
+    .scissors {
+        box-shadow:  0 4px 0 0 var(--scissorsShadow), 0 6px 5px -3px black;
+    }
+    
+    .scissors:hover {
+        box-shadow:  0 4px 0 0 var(--scissorsShadow), 0 0 0 21px rgba(255, 255, 255, 0.05);
+    }
+    
+    .spock {
+        box-shadow: 0 4px 0 0 var(--spockShadow), 0 6px 5px -3px black;
+        margin-bottom: 0;
+    }
+    
+    .spock:hover {
+        box-shadow: 0 4px 0 0 var(--spockShadow), 0 0 0 21px rgba(255, 255, 255, 0.05);
+    }
+    
+    .paper {
+        box-shadow: 0 4px 0 0 var(--paperShadow), 0 6px 5px -3px black;
+        margin-bottom: 0;
+    }
+    
+    .paper:hover {
+        box-shadow: 0 4px 0 0 var(--paperShadow), 0 0 0 21px rgba(255, 255, 255, 0.05);
+    }
+    
+    
+    .lizard {
+        box-shadow: 0 4px 0 0 var(--lizardShadow), 0 6px 5px -3px black;
+        margin-right: 16px;
+    }
+
+    .lizard:hover {
+        box-shadow: 0 4px 0 0 var(--lizardShadow), 0 0 0 21px rgba(255, 255, 255, 0.05);
+    }
+    
+    .rock {
+        box-shadow: 0 4px 0 0 var(--rockShadow), 0 6px 5px -3px black;
+        margin-left: 16px;
+    }
+
+    .rock:hover {
+        box-shadow: 0 4px 0 0 var(--rockShadow), 0 0 0 21px rgba(255, 255, 255, 0.05);
+    }
+
+    .rules-btn-container {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 15px;
+    }
+
+    .player-pick {
+        width: max-content;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-self: flex-end;
+        margin-right: 25px;
+    }
+    
+    .player-pick h3 {
+        font-size: 15px;
+        line-height: 32px;
+        letter-spacing: 1.875px;
+        margin-bottom: 0;
+        margin-top: 17px ;
+    }
+
+    .AI-pick {
+        width: max-content;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-left: 25px;
+    }
+
+    .AI-pick h3 {
+        font-size: 15px;
+        line-height: 32px;
+        letter-spacing: 1.875px;
+        margin-bottom: 0;
+        margin-top: 17px ;
+    }
+
+    .picked-shape {
+        height: 130px;
+        width: 130px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .AI-shape {
+        height: 130px;
+        width: 130px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .picked-inner-circle {
+        box-shadow: inset 0 5px 0 0 #BABFD4;
+    }   
+
+    .picked-inner-circle img {
+        width: 50px;
+    }
+
+    .AI-shape-inner img {
+        width: 50px;
+    }
+
+}
+
+@media only screen and (max-width: 580px) {
+    
+    body {
+        padding-bottom: 100px;
+    }
+
+    .rules {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 32px;
+    }
+
+    .modal-head {
+        display: block;
+        text-align: center;
+        margin: 0 0 50px 0;
+    }
+
+    .close-modal {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 40px;
+    }
+
+    .rules-img {
+        width: 100%;
+    }
+
+}
+
+
+@media only screen and (max-width: 400px) {
+
+    .container {
+        padding: 30px;
+    }
+
+    .AI-pick {
+        margin-left: 10px;
+    }
+
+    .player-pick {
+        margin-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    body {
+        height: unset;
+    }
+}

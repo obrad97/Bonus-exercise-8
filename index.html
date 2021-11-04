@@ -31,19 +31,7 @@
             </header>
             <main>
                 <div class="main-bg">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="329"
-                        height="313"
-                    >
-                        <path
-                            fill="none"
-                            stroke="#000"
-                            stroke-width="15"
-                            d="M164.5 9.27L9.26 122.06l59.296 182.495h191.888L319.74 122.06 164.5 9.271z"
-                            opacity=".2"
-                        />
-                    </svg>
+                    <img src="images/bg-pentagon.svg" alt="bg-pentagon" />
                 </div>
                 <div class="game-buttons">
                     <div class="scissors circle" data-value="scissors">
@@ -76,36 +64,40 @@
                     </div>
                 </div>
             </main>
-            <button type="button" class="rules-btn">rules</button>
-        </div>
-        <div class="battle-display">
-            <div class="player-pick">
-                <h3>you picked</h3>
-                <div class="picked-shape">
-                    <div class="picked-inner-circle">
-                        <img src="images/icon-scissors.svg" alt="scissors" />
+            <div class="battle-display">
+                <div class="player-pick">
+                    <h3>you picked</h3>
+                    <div class="picked-shape">
+                        <div class="picked-inner-circle">
+                            <img
+                                class="player-choice"
+                                src="images/icon-scissors.svg"
+                                alt="scissors"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="result">
+                    <h1 class="winner-result"></h1>
+                    <button class="play-again-btn" type="button">
+                        Play Again
+                    </button>
+                </div>
+                <div class="AI-pick">
+                    <h3>The house picked</h3>
+                    <div class="AI-shape">
+                        <div class="AI-shape-inner">
+                            <img class="AI-choice" src="" alt="" />
+                            <img
+                                class="loader"
+                                src="images/Dual Ring-1s-200px.svg"
+                                alt=""
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="result">
-                <h1 class="winner-result"></h1>
-                <button class="play-again-btn" type="button">Play Again</button>
-            </div>
-            <div class="AI-pick">
-                <h3>The house picked</h3>
-                <div class="AI-shape">
-                    <div class="AI-shape-inner">
-                        <img class="AI-choice" src="" alt="" />
-                        <img
-                            class="loader"
-                            src="images/Dual Ring-1s-200px.svg"
-                            alt=""
-                        />
-                    </div>
-                </div>
-            </div>
         </div>
-
         <div class="rules-modal">
             <div class="rules">
                 <div class="modal-head">
@@ -116,9 +108,15 @@
                         class="close-modal"
                     />
                 </div>
-
-                <img src="images/image-rules-bonus.svg" alt="rules-img" />
+                <img
+                    class="rules-img"
+                    src="images/image-rules-bonus.svg"
+                    alt="rules-img"
+                />
             </div>
+        </div>
+        <div class="rules-btn-container">
+            <button type="button" class="rules-btn">rules</button>
         </div>
         <script src="assets/js/script.js"></script>
     </body>
