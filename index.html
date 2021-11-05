@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="images/favicon-32x32.png"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <title>Rock, Paper, Scissors</title>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="logo">
+                    <img src="/images/logo-bonus.svg" alt="logo" />
+                </div>
+                <div class="scoreboard">
+                    <h4>score</h4>
+                    <h1 class="score">0</h1>
+                </div>
+            </header>
+            <main>
+                <div class="main-bg">
+                    <img src="images/bg-pentagon.svg" alt="bg-pentagon" />
+                </div>
+                <div class="game-buttons">
+                    <div class="scissors circle" data-value="scissors">
+                        <div class="inner-circle">
+                            <img
+                                src="images/icon-scissors.svg"
+                                alt="scissors"
+                            />
+                        </div>
+                    </div>
+                    <div class="spock circle" data-value="spock">
+                        <div class="inner-circle">
+                            <img src="images/icon-spock.svg" alt="spock" />
+                        </div>
+                    </div>
+                    <div class="paper circle" data-value="paper">
+                        <div class="inner-circle">
+                            <img src="images/icon-paper.svg" alt="paper" />
+                        </div>
+                    </div>
+                    <div class="lizard circle" data-value="lizard">
+                        <div class="inner-circle">
+                            <img src="images/icon-lizard.svg" alt="lizard" />
+                        </div>
+                    </div>
+                    <div class="rock circle" data-value="rock">
+                        <div class="inner-circle">
+                            <img src="images/icon-rock.svg" alt="rock" />
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <div class="battle-display">
+                <div class="player-pick">
+                    <h3>you picked</h3>
+                    <div class="picked-shape">
+                        <div class="picked-inner-circle">
+                            <img
+                                class="player-choice"
+                                src="images/icon-scissors.svg"
+                                alt="scissors"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="result">
+                    <h1 class="winner-result"></h1>
+                    <button class="play-again-btn" type="button">
+                        Play Again
+                    </button>
+                </div>
+                <div class="AI-pick">
+                    <h3>The house picked</h3>
+                    <div class="AI-shape">
+                        <div class="AI-shape-inner">
+                            <img class="AI-choice" src="" alt="" />
+                            <img
+                                class="loader"
+                                src="images/Dual Ring-1s-200px.svg"
+                                alt=""
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rules-modal">
+            <div class="rules">
+                <div class="modal-head">
+                    <h1>rules</h1>
+                    <img
+                        src="images/icon-close.svg"
+                        alt="close"
+                        class="close-modal"
+                    />
+                </div>
+                <img
+                    class="rules-img"
+                    src="images/image-rules-bonus.svg"
+                    alt="rules-img"
+                />
+            </div>
+        </div>
+        <div class="rules-btn-container">
+            <button type="button" class="rules-btn">rules</button>
+        </div>
+        <script src="assets/js/script.js"></script>
+    </body>
+</html>
